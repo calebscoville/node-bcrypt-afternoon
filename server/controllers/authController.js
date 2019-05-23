@@ -9,6 +9,10 @@ module.exports = {
         if (existingUser) {
             return res.status(409).send('Username taken');
         }
-        const salt = bcrypt.gen
+        const salt = bcrypt.genSalt(10);
+        const hash = bcrypt.hashSync(password, salt);
+        const registeredUser = await db.register_user([isAdmin, username, hash]);
+        const user = registeredUser[0];
+        req.session.user = {}
     }
 }
