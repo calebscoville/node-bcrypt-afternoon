@@ -26,5 +26,6 @@ app.use(
 );
 
 app.post('/auth/register', authCtrl.register);
+app.post('/auth/login', authCtrl.login);
 
 app.listen(PORT, ()=>console.log('listening on port ${PORT}'))
