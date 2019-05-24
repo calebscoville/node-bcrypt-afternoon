@@ -39,6 +39,15 @@ export default class Header extends Component {
     .catch(err => alert(err.response.request.response));
   }
 
+  logout() {
+    axios
+    .get('/auth/logout')
+    .then(() => {
+      this.props.updateUser({});
+    })
+    .catch(err => console.log(err));
+  }
+
   register() {
     const { username, password, asAdmin } = this.state;
     axios
